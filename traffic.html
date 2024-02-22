@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Light </title>
+    <style>
+        body{
+            background-color: #b7b6b6;
+        }
+        .traffic-light {
+            width: 100px;
+            height: 300px;
+            background: #0a0909;
+            border-radius: 15px;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .light {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgb(207, 207, 213);
+            transition: opacity 1s;
+        }
+
+        .red {
+            background: red;
+            
+        }
+
+        .yellow {
+            background: yellow;
+        }
+
+        .green {
+            background: green;
+        }
+        .traffic-stand{
+            position: absolute;
+            height: 300px;
+            width: 10px;
+            background-color: #0e0c0c;
+            margin-left: 760px;
+            top: 390px;
+        }
+        .traffic-base{
+            position: absolute;
+            width: 30px;
+            height: 10px;
+            background-color: #0c0a0a;
+            margin-left: 750px;
+            bottom: 27px;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="traffic-light">
+    <div class="light red"></div>
+    <div class="light yellow"></div>
+    <div class="light green"></div>
+</div>
+<div class="traffic-stand"></div>
+<div class="traffic-base"></div>
+
+<script>
+    function switchToRed() {
+        var lights = document.querySelectorAll('.light');
+        lights[0].classList.add('red');
+        lights[0].style.opacity = 1;
+        lights[1].style.opacity = 0.2;
+        lights[2].style.opacity = 0.2;
+        setTimeout(switchToGreen, 3000);  
+    }
+
+    function switchToYellow() {
+        var lights = document.querySelectorAll('.light');
+        lights[0].style.opacity = 0.2;
+        lights[1].classList.add('yellow');
+        lights[1].style.opacity = 1;
+        lights[2].style.opacity = 0.2;
+        setTimeout(switchToRed, 3000); 
+    }
+
+    function switchToGreen() {
+        var lights = document.querySelectorAll('.light');
+        lights[0].style.opacity = 0.2;
+        lights[1].style.opacity = 0.2;
+        lights[2].classList.add('green');
+        lights[2].style.opacity = 1;
+        setTimeout(switchToYellow, 3000); 
+    }
+
+    function simulateTrafficLight() {
+        setTimeout(switchToRed, 0); 
+    }
+
+   
+    window.onload = simulateTrafficLight;
+</script>
+
+</body>
+</html>
